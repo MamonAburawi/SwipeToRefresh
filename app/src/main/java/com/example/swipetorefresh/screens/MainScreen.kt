@@ -19,8 +19,6 @@ import kotlin.random.Random
 
 class MainScreen : Fragment() {
     private lateinit var binding: MainScreenBinding
-    private var list = ArrayList<Users>()
-    private var name = ""
 
     private lateinit var viewModel: MainScreenViewModel
 
@@ -41,8 +39,7 @@ class MainScreen : Fragment() {
 
             // click on item..
             recycleView.adapter = UserAdapter(UserAdapter.ClickListener{
-
-
+                Toast.makeText(activity,it.name,Toast.LENGTH_SHORT).show()
             })
 
 
@@ -51,15 +48,12 @@ class MainScreen : Fragment() {
 
                 }else{
                     swipeRefreshLayout.isRefreshing = false
-
                 }
             })
 
+
             swipeRefreshLayout.setOnRefreshListener {
-
                 viewModel.addData(Users(1,"ahmed"))
-
-
             }
 
 
